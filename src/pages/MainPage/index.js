@@ -25,27 +25,33 @@ const View = (props) => (
               <div className='left'>
                 <div>
                   <label>Celcius:</label>
-                  {/* <input 
+                  <input 
                     type="text" 
                     name="celcius"
                     onChange={(e) => setCelcius(e.target.value)}
                     value={celcius ? celcius: ''}
-                  /> */}
-                  <input 
+                  />
+                  {/* <input 
                     type="text" 
                     name="celcius"
                     onChange={(e) => onChangeHandler('celcius', e.target.value)}
                     value={celcius ? celcius: ''}
-                  />
+                  /> */}
                 </div>
                 <div>
                   <label>Farenheit:</label>
-                   <input
+                  <input 
+                    type="text" 
+                    name="celcius"
+                    onChange={(e) => setFarenheit(e.target.value)}
+                    value={farenheit ? farenheit: ''}
+                  />
+                   {/* <input
                     type="text"
                     name="farenheit"
                     onChange={(e) => onChangeHandler('farenheit', e.target.value)}
                     value={farenheit ? farenheit : ''}
-                  />
+                  /> */}
                 </div>
               </div>
               <div className='right'>

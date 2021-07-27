@@ -41,6 +41,21 @@ const Container = ({ children }) => {
     console.log('page on load')
   }, [])
 
+  useEffect(() => {
+    console.log('celcius value', celcius)
+    const convertedValue = ((celcius * 9) / 5) + 32
+
+    if (convertedValue === farenheit) {
+      return
+    }  else {
+      setFarenheit(convertedValue)
+    }
+  }, [celcius])
+
+  useEffect(() => {
+    console.log('celcius value', celcius)
+  }, [farenheit])
+
 
   return children({
     celcius,
