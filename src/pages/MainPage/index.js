@@ -1,7 +1,8 @@
 import React from 'react'
 import ViewContainer from './container'
+
 // styles below
-import {PageWrapper, ThermoWrapper, ContentBoxFlex} from './styles'
+import {PageWrapper, ThermoWrapper, ContentBoxFlex, StyledFormGroup, StyledTextDisplay} from './styles'
 // import below all needed components
 
 const View = (props) => (
@@ -11,51 +12,66 @@ const View = (props) => (
       setCelcius,
       farenheit,
       setFarenheit,
-      onChangeHandler
+      graphic,
+      convertTemp,
     }) => (
       <PageWrapper>
-        <header className='App-header'>
-          <button>Light Theme</button>
-          {/* insert theme toggle here */}
-       </header>
        <div className='App-body'>
-         <ThermoWrapper className='bgtest4'>
-            <p>Convert Celcius to Farenheit and vice-versa by inputing on the fields below</p>
+          <header className='App-header'>
+            <button
+             onClick={() => 
+              props.theme === 'light' ? props.setTheme('dark') : props.setTheme('light') 
+             }>
+            {
+              props.theme === 'light' ? "Switch to Dark Mode" : "Switch to Light Mode"  
+            }
+            </button>
+            {/* insert theme toggle here */}
+          </header>
+         <ThermoWrapper className='wrapper'>
+          
+            <p>How to use: Input value on the field then press enter</p>
             <ContentBoxFlex>
               <div className='left'>
-                <div>
-                  <label>Celcius:</label>
+                <StyledFormGroup>
+                  <label>Celcius:</label><br/>
                   <input 
                     type="text" 
                     name="celcius"
-                    onChange={(e) => setCelcius(e.target.value)}
+                    onChange={e => setCelcius(e.target.value)}
+                    onBlur={(e) => convertTemp('celcius', e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' ? convertTemp('celcius', e.target.value) : ''}
                     value={celcius ? celcius: ''}
+                    defaultValue={celcius}
                   />
-                  {/* <input 
-                    type="text" 
-                    name="celcius"
-                    onChange={(e) => onChangeHandler('celcius', e.target.value)}
-                    value={celcius ? celcius: ''}
-                  /> */}
-                </div>
-                <div>
-                  <label>Farenheit:</label>
+                </StyledFormGroup>
+                <StyledFormGroup>
+                  <label>Farenheit:</label><br/>
                   <input 
                     type="text" 
                     name="celcius"
                     onChange={(e) => setFarenheit(e.target.value)}
+                    onBlur={(e) => convertTemp('farenheit', e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' ? convertTemp('farenheit', e.target.value) : ''}
                     value={farenheit ? farenheit: ''}
+                    defaultValue={farenheit}
+
                   />
-                   {/* <input
-                    type="text"
-                    name="farenheit"
-                    onChange={(e) => onChangeHandler('farenheit', e.target.value)}
-                    value={farenheit ? farenheit : ''}
-                  /> */}
-                </div>
+                </StyledFormGroup>
+                <StyledTextDisplay>
+                  <small>
+                  Conversion guide <br/>
+                  °C to °F	Multiply by 9, then divide by 5, then add 32 <br/>
+                  °F to °C	Deduct 32, then multiply by 5, then divide by 9
+                  </small>
+                </StyledTextDisplay>
               </div>
               <div className='right'>
-                  Empty Space
+                  <img
+                    src={graphic.icon}
+                    alt={graphic.message}
+                  />
+                  <p className='graphic-message'>{graphic.message}</p>
               </div>
             </ContentBoxFlex>
          </ThermoWrapper>
