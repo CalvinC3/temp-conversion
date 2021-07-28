@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { debounce } from 'lodash'
 // images
 import coldIcon from '../../Assets/cold.png'
 import happyIcon from '../../Assets/happy.png'
@@ -48,7 +47,6 @@ const Container = ({ children }) => {
 
   // all effects
   useEffect(() => {
-    console.log('page on load')
     setInitialLoad(false)
   }, [])
 
