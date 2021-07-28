@@ -66,6 +66,16 @@ What happens inside the conversion methdod are:
  5. If the value of the theme changed, the object our theme provider also changes - the object contains our styling configuration
  6. I also added a transition animation to make the switching more pleasant to the eyes
 
+
+### Rationale behind the UI
+I wanted to keep it simple.  Sometimes we cant help but make things fancy.  I needed to keep my mindset into usability over fanciness.
+So the main focus of the UI/UX is `Information`.  That is one of the reason I added a conversion guide on the lower part of the component. The emoji and message is just to add feelings as to how the temperature might interact with our users in the real world - not really defined in the best way but still enough to express the idea.
+
+### Rationale behind the Tech stack
+React is of course one of the sought after JS libraries with an awesome state management built-in.  Complimented with styled components which enables dyanmic theme-ing as well as createing components out of styled divs.  I believe this is one of the industry standard libraries as of the moment. Also I designed it to be as linear as possible since the application in itself should not be complicated.  If it is easy to follow then the better for newer programmers who will review the code.
+
+
+
 ### Project Setup
 `public` contains the static file pre-built using create-react-app
 Source code is inside the `src` folder and the inside is structured as such:
@@ -84,6 +94,7 @@ Inside the `MainPage` are
 During the development, these are the difificulties I encountered
 1. UI/UX idea - The app is simple, but to acutally design the UI/UX requires creativity.  I'm trying to not overthink it and focus on simplicity and usability. I just added the fancy stuff at the end.
 2. Recurrsion problem - I first used onChange as the trigger of the conversion method but it creates an endless recurrsion problem since both fields use the same onchange method I created, when one field changed and the converted value is updated on the other field it will also trigger the same onchange handler, thus the recurrsion - the solution I was able to think of is to put the actual conversion on a the onBlur and keypress (enter) event handler
+3. Other requirements are not stated such as field validation/assertions, so for these things I kept the users in mind so I can keep it as simple as possible.
 
 ### Not considered
 Mobile responsiveness is not considered on this project
