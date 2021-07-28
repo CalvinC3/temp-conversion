@@ -84,3 +84,6 @@ Inside the `MainPage` are
 During the development, these are the difificulties I encountered
 1. UI/UX idea - The app is simple, but to acutally design the UI/UX requires creativity.  I'm trying to not overthink it and focus on simplicity and usability. I just added the fancy stuff at the end.
 2. Recurrsion problem - I first used onChange as the trigger of the conversion method but it creates an endless recurrsion problem since both fields use the same onchange method I created, when one field changed and the converted value is updated on the other field it will also trigger the same onchange handler, thus the recurrsion - the solution I was able to think of is to put the actual conversion on a the onBlur and keypress (enter) event handler
+
+### Not considered
+Mobile responsiveness is not considered on this project
